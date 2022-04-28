@@ -1,0 +1,16 @@
+<div class="panel-heading">
+    <h1>Counter App Component</h1>
+    <div class="panel-body">
+        <hr /><label for="hitcount">Number of times Hitted :
+            <app-hit-button [label]="hit" (hit)="increaseCount($event)">
+
+            </app-hit-button>
+        </label>
+        <hr>
+        <label for="hitIncrease">Hit Increament Value :
+            <app-count-display [count]="hitIncrementValue">
+
+            </app-count-display>
+        </label>
+    </div>
+</div>

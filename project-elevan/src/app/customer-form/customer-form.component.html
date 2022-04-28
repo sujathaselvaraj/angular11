@@ -1,0 +1,112 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+
+    <div class="form-group">
+        <label for="fname">First Name</label>
+        <input formControlName="fname" id="fname" type="text" class="form-control">
+        <div *ngIf="f.fname?.touched && f.fname?.invalid" class="alert alert-danger">
+            <div *ngIf="f.fname.errors?.required">FIrst Name is required.</div>
+            <div *ngIf="f.fname.errors?.minlength">First Name should be 3 character.</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="lname">Last Name</label>
+        <input formControlName="lname" id="lname" type="text" class="form-control">
+        <div *ngIf="f.lname?.touched && f.lname?.invalid" class="alert alert-danger">
+            <div *ngIf="f.lname.errors?.required">Last Name is required.</div>
+            <div *ngIf="f.lname.errors?.minlength">Last Name should be 3 character.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="mobileno">Mobile No:</label>
+        <input formControlName="mobileno" id="mobileno" type="text" class="form-control">
+        <div *ngIf="f.mobileno?.touched && f.mobileno?.invalid" class="alert alert-danger">
+            <div *ngIf="f.mobileno.errors?.required">Mobile Number is required.</div>
+            <div *ngIf="f.mobileno.errors?.maxlength">Mobile Number should have only 10 digits.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input formControlName="email" id="email" type="text" class="form-control">
+        <div *ngIf="f.email?.touched && f.email?.invalid" class="alert alert-danger">
+            <div *ngIf="f.email.errors?.required">Email is required.</div>
+            <div *ngIf="f.email.errors?.email">Please, enter valid email address.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="body">Body</label>
+        <textarea formControlName="body" id="body" type="text" class="form-control">
+        </textarea>
+        <div *ngIf="f.body?.touched && f.body?.invalid" class="alert alert-danger">
+            <div *ngIf="f.body.errors?.minlength">body should be contain minimum 20 character.</div>
+            <div *ngIf="f.body.errors?.required">Body is required.</div>
+        </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+<!--<div class="panel-heading">Customer Form</div>
+<form name="customerForm" #customerFormGroup="ngForm" (submit)="saveCustomer(customerFormGroup)">
+    <div class="form-group" [class.has-error]="firstNameFormControl.invalid && firstNameFormControl.touched">
+        <label for="fName">
+            First Name:
+        </label>
+        <input class="form-control" placeholder="Enter first name" name="fName" [ngModel]="customerModel.firstName"
+            required minlength="3" #firstNameFormControl="ngModel">
+        <div class="help-block" *ngIf="firstNameFormControl.invalid && firstNameFormControl.touched">
+            <span *ngIf="firstNameFormControl.errors?.['required']">
+                <strong>First name Required!</strong>
+            </span>
+            <span *ngIf="firstNameFormControl.errors?.['minlength']">
+                <strong>First Name must be more than 3 characters</strong>
+            </span>
+
+        </div>
+    </div>
+    <div class="form-group" [class.has-error]="lastNameFormControl.invalid && lastNameFormControl.touched">
+        <label for="lName">
+            Last Name:
+        </label>
+        <input class="form-control" placeholder="Enter last name" name="lName" [ngModel]="customerModel.lastName"
+            required minlength="3" #lastNameFormControl="ngModel">
+        <div class="help-block" *ngIf="firstNameFormControl.invalid && firstNameFormControl.touched">
+            <span *ngIf="lastNameFormControl.errors?.['required']">
+                <mark>Last name Required!</mark>
+            </span>
+            <span *ngIf="lastNameFormControl.errors?.['minlength']">
+                <mark>Last name > 3 characters</mark>
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="email">
+            Email Id:
+        </label>
+        <input class="form-control" placeholder="Enter email address" name="email" [ngModel]="customerModel.email"
+            #emailFormcontrol="ngModel">
+    </div>
+    <button class="btn btn-primary">Submit</button>
+</form>
+
+<pre class="bg-info card">
+    is pristine : {{customerFormGroup.pristine}}
+    is dirty : {{customerFormGroup.dirty}}
+
+    is valid : {{customerFormGroup.valid}}
+    is invalid : {{customerFormGroup.invalid}}
+
+    is untouched : {{customerFormGroup.untouched}}
+    is touched : {{customerFormGroup.touched}}
+</pre>
+<pre class="bg-warning card" style="width: 18rem">
+    is pristine : {{firstNameFormControl.pristine}}
+    is dirty : {{firstNameFormControl.dirty}}
+
+    is valid : {{firstNameFormControl.valid}}
+    is invalid : {{firstNameFormControl.invalid}}
+
+    is untouched : {{firstNameFormControl.untouched}}
+    is touched : {{firstNameFormControl.touched}}
+</pre> -->

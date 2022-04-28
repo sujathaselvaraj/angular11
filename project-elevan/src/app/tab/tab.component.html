@@ -1,0 +1,15 @@
+<div>
+    <section>
+        <ul class="nav nav-pills">
+            <li><a [class.active]="isTabSelected(10 + idx)" href (click)="onTabChange($event, 10 + idx)">Description</a>
+            </li>
+            <li><a [class.active]="isTabSelected(20 + idx)" href (click)="onTabChange($event, 20 + idx)">Review</a></li>
+            <li><a [class.active]="isTabSelected(30 + idx)" href (click)="onTabChange($event, 30 + idx)">Comments</a>
+            </li>
+        </ul>
+    </section>
+    <hr />
+    <div class="panel" *ngIf="isTabSelected(10 + idx)"> {{book.description}}</div>
+    <div class="panel" *ngIf="isTabSelected(20 + idx)"> Not Available</div>
+    <div class="panel" *ngIf="isTabSelected(30 + idx)"> Not Available</div>
+</div>

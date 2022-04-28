@@ -1,0 +1,31 @@
+<div class="page-header">
+    <div class="list-group">
+        <div *ngFor="let item of books; let idx=index; let isFirst=first" class="list-group-item">
+            <button type="button" class="btn btn-primary">Count:</button>
+            <span class="badge text-danger" [innerText]="idx+1"></span>
+            <!-- <h4>Book Name: {{item.name | uppercase}} - <small>{{item.publishedate | date: 'MMM YYYY'}}</small></h4>
+            <img alt="3 Zeros" [src]="item.images[0].thumb">
+            <h5>Original Price : {{item.price | currency: 'INR': true}}</h5>
+            <h4>Discount : {{item.discount}}</h4>
+            <h4>Discounted Price : {{item.price | priceDiscount : item.discount | currency: 'INR': true}}</h4>
+            <p>Author: {{item.author}}</p>
+            <button class="btn btn-primary" type="button" *ngIf="item.canBuy" (click)="onbuy(item)">Buy</button>
+            <pre>{{item | json}}</pre> -->
+            <hr />
+            <!-- <section>
+                <ul class="nav nav-pills">
+                    <li><a [class.active]="isTabSelected(10 + idx)" href
+                            (click)="onTabChange($event, 10 + idx)">Description</a></li>
+                    <li><a [class.active]="isTabSelected(20 + idx)" href
+                            (click)="onTabChange($event, 20 + idx)">Review</a></li>
+                    <li><a [class.active]="isTabSelected(30 + idx)" href
+                            (click)="onTabChange($event, 30 + idx)">Comments</a></li>
+                </ul>
+            </section>
+            <hr />
+            <div class="panel" *ngIf="isTabSelected(10 + idx)"> {{item.description}}</div>
+            <div class="panel" *ngIf="isTabSelected(20 + idx)"> Not Available</div>
+            <div class="panel" *ngIf="isTabSelected(30 + idx)"> Not Available</div> -->
+        </div>
+    </div>
+</div>

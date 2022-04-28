@@ -1,0 +1,61 @@
+<div class="panel-heading">Employee Form</div>
+<div class="panel-body">
+    <form [formGroup]="employeeFormGroup">
+        <div class="form-group" [class.has-error]="firstName.invalid && firstName.touched">
+            <label for="fname">First Name</label>
+            <input id="fname" class="form-control" formControlName="firstName" placeholder="First Namr Required"
+                required />
+        </div>
+        <div class="help-block text-danger" *ngIf="firstName.touched"><span *ngIf="firstName.errors?.required">
+                First Name is REQUIRED</span>
+            <span *ngIf="firstName.errors?.minlength"> First Name MUST be minimum 3 characters!!!</span>
+        </div>
+        <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input id="lname" class="form-control" formControlName="lastName" />
+        </div>
+        <div formGroupName="emailGroup">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" class="form-control" formControlName="email" placeholder="Email (required)" />
+            </div>
+            <div class="form-group">
+                <label for="confirmEmail">Confirm Email</label>
+                <input id="confirmEmail" class="form-control" formControlName="confirmEmail"
+                    placeholder="confirmEmail (required)" />
+            </div>
+
+            <div class="help-block text-danger" *ngIf="emailGroup.errors?.match && emailGroup.touched">Emails does
+                not Match!!</div>
+        </div>
+        <div class="form-group">
+            <label for="mobile">Mobile: </label>
+            <input id="mobile" class="form-control" formControlName="mobile" placeholder="Enter your Phone #">
+            <div class="help-block text-danger" *ngIf="mobile.touched"><span *ngIf="mobile.errors?.required">
+                    Mobile Number is REQUIRED</span>
+                <span *ngIf="mobile.invalid"> Mobile number must be between 8000000000 to 9999999999!</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="notification">Send Notification: </label>
+            <input id="notiication" type="radio" formControlName="sendNotiication" value="email">&nbsp;Email
+            <input id="notiication" type="radio" formControlName="sendNotiication" value="sms"
+                (click)="donotification('sms')">&nbsp;SMS
+        </div>
+        <div class="form-group" [class.has-error]="range.invalid && range.touched">
+            <label for="range">Range : </label>
+            <input id="range" class="form-control" formControlName="range">
+            <div class="help-block text-danger" *ngIf="range.invalid && range.touched">
+                Range must be Between 10 and 20!!!
+            </div>
+        </div>
+        <hr />
+        <button type="submit" class="btn btn-primary" [disabled]="!employeeFormGroup.valid">Submit
+        </button>
+        <button type="button" class="btn btn-secondary" (click)="loadEmployee()">Load Employee</button>
+    </form>
+    <pre>Form Status: {{employeeFormGroup.status}}</pre>
+    <pre>FName: {{firstName.value}}</pre>
+    <pre>Form Value: {{employeeFormGroup.value | json}}</pre>
+
+</div>
