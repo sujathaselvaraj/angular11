@@ -1,0 +1,154 @@
+<!-- <div class="card m-3">
+  <h5 class="card-header"> {{title}}</h5>
+  <div class="card-body">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+      <div class="row">
+        <div class="form-group col-3">
+          <label>Source</label>
+          <select formControlName="source" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && registerForm.get('source').hasError('required') }">
+            <option *ngFor="let d of ref.district" value="{{d}}">{{d}}</option>
+
+          </select>
+          <div *ngIf="submitted && registerForm.get('source').hasError('required')" class="invalid-feedback">
+            <div>Source is required</div>
+          </div>
+        </div>
+
+        <div class="form-group col-3">
+          <label>Destination</label>
+          <select formControlName="destination" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && registerForm.get('destination').hasError('required') }">
+            <option *ngFor="let d of ref.district" value="{{d}}">{{d}}</option>
+
+          </select>
+          <div *ngIf="submitted && registerForm.get('destination').hasError('required')" class="invalid-feedback">
+            <div>Destination is required</div>
+          </div>
+        </div>
+        <div class="form-group col-3">
+          <label>Date</label>
+          <mat-form-field class="example-full-width">
+            <input formControlName="date" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && registerForm.get('date').hasError('required')   }" matInput
+              [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <div *ngIf="submitted && registerForm.get('date').hasError('required')" class="invalid-feedback">
+              <div>date is required</div>
+            </div>
+          </mat-form-field>
+
+        </div>
+        <div class="form-group col-1">
+          <label></label>
+          <button class="btn btn-primary mr-1">Search</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div> -->
+
+
+<div class="card m-3">
+  <h5 class="card-header"> {{title}}</h5>
+  <div class="card-body">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+      <div class="row">
+        <div class="form-group col-3">
+          <label>Name</label>
+          <input  formControlName="travelname" [(ngModel)]="bus.travelname" class="form-control" [ngClass]="{ 'is-invalid': submitted && (registerForm.get('travelname').hasError('required') && registerForm.get('travelname').touched )  }"   >
+    </div>
+        <div class="form-group col-3">
+          <label>Source</label>
+          <select formControlName="source" class="form-control"  [(ngModel)]="bus.source"
+            [ngClass]="{ 'is-invalid': submitted && registerForm.get('source').hasError('required') }">
+            <option *ngFor="let d of ref.district" value="{{d}}">{{d}}</option>
+
+          </select>
+          <div *ngIf="submitted && registerForm.get('source').hasError('required')" class="invalid-feedback">
+            <div>Source is required</div>
+          </div>
+        </div>
+
+        <div class="form-group col-3">
+          <label>Destination</label>
+          <select formControlName="destination" class="form-control" [(ngModel)]="bus.destination"
+            [ngClass]="{ 'is-invalid': submitted && registerForm.get('destination').hasError('required') }">
+            <option *ngFor="let d of ref.district" value="{{d}}">{{d}}</option>
+
+          </select>
+          <div *ngIf="submitted && registerForm.get('destination').hasError('required')" class="invalid-feedback">
+            <div>Destination is required</div>
+          </div>
+        </div>
+        <div class="form-group col-3">
+          <label>Duration</label>
+          <input  formControlName="duration" [(ngModel)]="bus.duration" class="form-control" [ngClass]="{ 'is-invalid': submitted && (registerForm.get('duration').hasError('required') && registerForm.get('duration').touched )  }"   >
+    </div>
+        <div class="form-group col-3">
+          <label>Price</label>
+          <input  formControlName="price" [(ngModel)]="bus.price" class="form-control" [ngClass]="{ 'is-invalid': submitted && (registerForm.get('price').hasError('required') && registerForm.get('price').touched )  }"   >
+     </div>
+        <div class="form-group col-1">
+          <label></label>
+          <button class="btn btn-primary mr-1">ADD</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
+<ng-container *ngIf="returndata.length != 0;else elseblock" class="example-card">
+  <mat-card  *ngFor="let trvl of returndata , let i = index"  class="example-card">
+  <mat-card-header>
+    <mat-card-title>{{trvl.data.travelname}} - <span style="font-size: 15px;"> ₹{{trvl.data.price}}/-</span></mat-card-title>
+    <mat-card-subtitle>  {{trvl.data.source}} to {{trvl.data.destination}},  {{trvl.data.duration}} 
+    <mat-icon (click)="editbus(i)">edit</mat-icon>
+    <mat-icon (click)="deletebus(i)">delete</mat-icon>
+    <!-- <span *ngFor="let f of trvl.data.featurs"> {{f.name}} </span> -->
+     
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <!-- <mat-form-field appearance="fill">
+      <mat-label>Seat</mat-label>
+      <mat-select [formControl]="select" [(ngModel)]="trvl.data.count" multiple>
+        <mat-option *ngFor="let g of  trvl.data.seats  " [value]="g">{{g}}</mat-option>
+      </mat-select>
+    </mat-form-field> -->
+    <!-- <mat-radio-group [formControl]="radio" aria-labelledby="example-radio-group-label" class="example-radio-group"
+      [(ngModel)]="trvl.data.select">
+      <mat-radio-button (click)="radioChange(i)" value=true class="example-radio-button">
+
+      </mat-radio-button>
+    </mat-radio-group> -->
+    
+ 
+  </mat-card-content>
+  <mat-card-actions>
+  </mat-card-actions>
+</mat-card>
+</ng-container>
+<ng-template #elseblock>
+  <div class="row">
+<div class="col-12 text-center">
+  No Data
+</div>
+  </div>
+
+</ng-template>
+<br>
+<br>
+
+<div class="row">
+  <div style="text-align:center;" class="col">
+    <!-- <button (click)="booktic()" mat-raised-button color="primary">Book Ticket</button> -->
+  </div>
+</div>
+<br>
+<br>
+<br>

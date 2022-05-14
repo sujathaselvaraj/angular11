@@ -1,0 +1,90 @@
+<form [formGroup]="couchform" (ngSubmit)="submit()">
+    <div class="form-group">
+        <label for="fname">First Name</label>
+        <input type="text" class="form-control" id="fname" formControlName="fname"><br>
+    </div>
+    <div *ngIf="f.fname?.touched && f.fname?.invalid" class="alert alert-danger">
+        <div *ngIf="f.fname.errors?.required">FIrst Name is required.</div>
+        <div *ngIf="f.fname.errors?.minlength">First Name should be 3 character.</div>
+    </div>
+    <div class="form-group">
+        <label for="lname">Last Name</label>
+        <input type="text" class="form-control" id="lname" formControlName="lname"><br>
+    </div>
+    <div *ngIf="f.lname?.touched && f.lname?.invalid" class="alert alert-danger">
+        <div *ngIf="f.lname.errors?.required">Last Name is required.</div>
+        <div *ngIf="f.lname.errors?.minlength">Last Name should be 3 character.</div>
+    </div>
+    <!-- <button class="btn btn-primary" type="button" *ngIf="item.canBuy" (click)="onbuy(item)">Buy</button> -->
+
+    <!-- <div><label for="gender">Gender</label><br>
+        <input type="radio" name="gender" value="male"> Male<br>
+        <input type="radio" name="gender" value="female"> Female<br>
+    </div>
+
+    <div><label for="temporaryAddress">Temporary Address</label>
+        <input type="text" class="form-control" id="temporaryAddress" formControlName="temporaryAddress"><br>
+    </div>
+    <div *ngIf="f.temporaryAddress?.touched && f.temporaryAddress?.invalid" class="alert alert-danger">
+        <div *ngIf="f.temporaryAddress.errors?.required">Temporary Address is required.</div>
+        <div *ngIf="f.temporaryAddress.errors?.minlength">Temporary Address should be 30 character.</div>
+    </div>
+    <div class="form-group"><label for="permanentAddress">Permanent Address</label>
+        <input type="text" class="form-control" id="permanentAddress" formControlName="permanentAddress"><br>
+    </div>
+    <div *ngIf="f.permanentAddress?.touched && f.permanentAddress?.invalid" class="alert alert-danger">
+        <div *ngIf="f.permanentAddress.errors?.required">Permanent Address is required.</div>
+        <div *ngIf="f.permanentAddress.errors?.minlength">Permanent Address should be 30 character.</div>
+    </div>
+    <div class="form-group">
+        <label for="mobileno">Mobile No:</label>
+        <input formControlName="mobileno" id="mobileno" type="text" class="form-control">
+        <div *ngIf="f.mobileno?.touched && f.mobileno?.invalid" class="alert alert-danger">
+            <div *ngIf="f.mobileno.errors?.required">Mobile Number is required.</div>
+            <div *ngIf="f.mobileno.errors?.maxlength">Mobile Number should have only 10 digits.</div>
+        </div>
+    </div>
+    <div class="form-group"><label for="city">City</label>
+        <input type="text" class="form-control" id="city" formControlName="city" name="city"><br>
+    </div>
+    <div *ngIf="f.city?.touched && f.city?.invalid" class="alert alert-danger">
+
+        <div *ngIf="f.city.errors?.required">City is required.</div>
+        <div *ngIf="f.city.errors?.minlength">City should be 3 character.</div>
+    </div> -->
+    <button class="btn btn-primary" type="submit">Submit</button>
+
+</form>
+<form [formGroup]="updateform" (ngSubmit)="update()">
+    <div class="form-group">
+        <label for="fname">First Name</label>
+        <input type="text" class="form-control" id="fname" formControlName="fname"><br>
+    </div>
+    <div *ngIf="g.fname?.touched && g.fname?.invalid" class="alert alert-danger">
+        <div *ngIf="g.fname.errors?.required">FIrst Name is required.</div>
+        <div *ngIf="g.fname.errors?.minlength">First Name should be 3 character.</div>
+    </div>
+    <div class="form-group">
+        <label for="lname">Last Name</label>
+        <input type="text" class="form-control" id="lname" formControlName="lname"><br>
+    </div>
+    <div *ngIf="g.lname?.touched && g.lname?.invalid" class="alert alert-danger">
+        <div *ngIf="g.lname.errors?.required">Last Name is required.</div>
+        <div *ngIf="g.lname.errors?.minlength">Last Name should be 3 character.</div>
+    </div>
+    <button class="btn btn-primary" type="submit">Update</button>
+
+</form>
+<form [formGroup]="idForm" (ngSubmit)="idRev()">
+    <h2>if u wabnt to update Enter the id and reference</h2>
+    <div class="form-group">
+        <label for="idValue">Update to the ID:</label>
+        <input type="text" class="form-control" id="i_d" formControlName="idValue"><br>
+    </div>
+    <div class="form-group">
+        <label for="rev">Update to the rev:</label>
+        <input type="text" class="form-control" id="rev" formControlName="rev"><br>
+    </div>
+    <button class="btn btn-primary" type="submit">ID and Rev to change</button>
+
+</form>

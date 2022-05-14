@@ -1,0 +1,50 @@
+<div class="card m-3">
+  <h5 class="card-header"> {{title}}</h5>
+  <div class="card-body">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+      <div class="row">
+        <div class="form-group col-3">
+          <label>Name</label>
+          <input  formControlName="travelname" [(ngModel)]="bus.travelname" class="form-control" [ngClass]="{ 'is-invalid': submitted && (registerForm.get('travelname').hasError('required') && registerForm.get('travelname').touched )  }"   >
+    </div>
+        <div class="form-group col-3">
+          <label>Source</label>
+          <select formControlName="source" class="form-control"  [(ngModel)]="bus.source"
+            [ngClass]="{ 'is-invalid': submitted && registerForm.get('source').hasError('required') }">
+            <option *ngFor="let d of ref.district" value="{{d}}">{{d}}</option>
+
+          </select>
+          <div *ngIf="submitted && registerForm.get('source').hasError('required')" class="invalid-feedback">
+            <div>Source is required</div>
+          </div>
+        </div>
+
+        <div class="form-group col-3">
+          <label>Destination</label>
+          <select formControlName="destination" class="form-control" [(ngModel)]="bus.destination"
+            [ngClass]="{ 'is-invalid': submitted && registerForm.get('destination').hasError('required') }">
+            <option *ngFor="let d of ref.district" value="{{d}}">{{d}}</option>
+
+          </select>
+          <div *ngIf="submitted && registerForm.get('destination').hasError('required')" class="invalid-feedback">
+            <div>Destination is required</div>
+          </div>
+        </div>
+        <div class="form-group col-3">
+          <label>Duration</label>
+          <input  formControlName="duration" [(ngModel)]="bus.duration" class="form-control" [ngClass]="{ 'is-invalid': submitted && (registerForm.get('duration').hasError('required') && registerForm.get('duration').touched )  }"   >
+    </div>
+        <div class="form-group col-3">
+          <label>Price</label>
+          <input  formControlName="price" [(ngModel)]="bus.price" class="form-control" [ngClass]="{ 'is-invalid': submitted && (registerForm.get('price').hasError('required') && registerForm.get('price').touched )  }"   >
+     </div>
+        <div class="form-group col-1">
+          <label></label>
+          <button class="btn btn-primary mr-1">Submit</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>

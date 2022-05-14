@@ -1,0 +1,84 @@
+<div class="card m-3">
+  <h3 class="card-header">{{title}}</h3>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-3">
+        {{ tavels.source}} to {{tavels.destination}}  
+    </div>
+    <div class="col-3">
+      {{tavels.travelname}}
+  </div>
+  <div class="col-6">
+    {{tavels.duration}}
+</div>
+  <div class="col-6">
+   Seats :  {{tavels.ticcount}}
+  </div>
+  <div class="col-6">
+    Seats :  {{seat_max.length}} Passengers
+   </div>
+</div>
+  <br>
+      <form *ngFor="let form of foramarray,let i = index" [formGroup]="form" (ngSubmit)="onSubmit()" >
+         
+          <div class="row">
+              <div class="form-group col-3">
+                  <label>Name</label>
+                <input  formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && (form.get('name').hasError('required') && form.get('name').touched )  }"   >
+ 
+                  <div *ngIf="submitted && (form.get('name').hasError('required') && form.get('name').touched)" class="invalid-feedback">
+                    <div>Name is required</div>
+                </div>
+              </div>
+              <div class="form-group col-3">
+                <label>DOB</label>
+                <mat-form-field class="example-full-width">
+                <input formControlName="dob"   [max]="maxDate"   class="form-control" [ngClass]="{ 'is-invalid': submitted && form.get('dob').hasError('required')   }" matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <div *ngIf="submitted && form.get('dob').hasError('required')" class="invalid-feedback">
+                  <div >DOB is required</div>
+              </div>
+              </mat-form-field>
+            
+            </div>
+            <div class="form-group col-3">
+              <label>Age  </label>
+            <input readonly [ngModel]="form.value.dob  | ageFilter"  formControlName="age" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.get('age').hasError('required')   }"   >
+
+              <div *ngIf="submitted && form.get('age').hasError('required')" class="invalid-feedback">
+                <div>Age is required</div>
+            </div>
+          </div>
+              <div class="form-group col-3">
+                <label>Gender</label>
+                <select    formControlName="gender" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.get('gender').hasError('required') }">
+                    <option  value="Male">Male </option>
+                    <option  value="Female"> Female</option>
+                   
+                </select>
+                <div *ngIf="submitted && form.get('gender').hasError('required')" class="invalid-feedback">
+                    <div  >Gender is required</div>
+                </div>
+            </div>
+            <div class="form-group col-3">
+              <label>Seat</label>
+
+              <select [(ngModel)]="seat_max[i]"   readonly formControlName="seat" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.get('seat').hasError('required') }">
+                  <option selected value="{{seat_max[i]}}"> {{seat_max[i]}} </option>
+                 
+              </select>
+              
+          </div>
+          
+        </div>
+        <br>
+      </form>
+    
+  </div>
+  <div style="text-align: center;" class="  col">
+    <label></label>
+    <button (click)="onSubmit()"  class="btn btn-primary mr-1">Book Ticket</button>
+  </div>
+  <br>
+</div>
